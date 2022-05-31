@@ -27,4 +27,10 @@ require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+
+  -- language server protocol support
+  use {
+    'neovim/nvim-lspconfig',
+    "williamboman/nvim-lsp-installer"
+  }
 end)
