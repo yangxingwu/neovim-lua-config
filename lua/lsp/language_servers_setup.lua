@@ -1,4 +1,4 @@
-local language_servers = require('lsp.language-servers')
+local language_servers = require('lsp.language_servers')
 
 for _, lsp in ipairs(language_servers) do
   require('lsp/' .. lsp)

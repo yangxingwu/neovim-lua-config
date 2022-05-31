@@ -7,9 +7,9 @@ require('plugins')
 -- plugin configs
 require('configs.gruvbox')
 require('configs.bufferline')
-require('configs.nvim-tree')
-require('configs.nvim-treesitter')
+require('configs.nvim_tree')
+require('configs.nvim_treesitter')
 
 -- language server protocol support
-require('lsp.nvim-lsp-installer')
-require('lsp.language-servers-setup')
+require('lsp.nvim_lsp_installer')
+require('lsp.language_servers_setup')
