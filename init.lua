@@ -12,3 +12,4 @@ require('configs.nvim-treesitter')
 
 -- language server protocol support
 require('lsp.nvim-lsp-installer')
+require('lsp.language-servers-setup')
