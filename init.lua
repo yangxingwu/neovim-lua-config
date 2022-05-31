@@ -5,6 +5,6 @@ require('basics')
 require('plugins')
 
 -- plugin configs
-require('config.gruvbox')
-require('config.bufferline')
-require('config.nvim-treesitter')
+require('configs.gruvbox')
+require('configs.bufferline')
+require('configs.nvim-treesitter')
