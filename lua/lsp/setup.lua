@@ -9,5 +9,5 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 
 -- Use a loop to conveniently call 'setup' on multiple servers
 for _, lsp in pairs(LANGUAGE_SERVERS) do
-  require('lsp/' .. lsp)
+  require('lsp/config/' .. lsp)
 end
