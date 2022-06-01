@@ -1,4 +1,13 @@
+require('lsp.common')
+
 require('lspconfig').sumneko_lua.setup {
+  -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
+  on_attach = LSP_ON_ATTACH,
+  flags = {
+    -- This will be the default in neovim 0.7+
+    debounce_text_changes = 150,
+  },
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
   settings = {
     Lua = {
       runtime = {
