@@ -7,6 +7,7 @@ require('plugins')
 -- plugin configs
 require('configs.gruvbox')
 require('configs.bufferline')
+require('configs.lualine')
 require('configs.nvim_tree')
 require('configs.nvim_treesitter')
 

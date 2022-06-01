@@ -16,6 +16,9 @@ require('packer').startup(function()
     requires = 'kyazdani42/nvim-web-devicons'
   }
 
+  -- Fancier statusline
+  use 'nvim-lualine/lualine.nvim'
+
   -- nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
