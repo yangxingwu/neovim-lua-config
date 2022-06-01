@@ -31,4 +31,8 @@ require('packer').startup(function()
 
   -- Add git related info in the signs columns and popups
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+  -- UI to select things (files, grep results, open buffers...)
+  use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 end)

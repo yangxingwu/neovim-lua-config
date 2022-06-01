@@ -11,6 +11,7 @@ require('configs.lualine')
 require('configs.nvim_tree')
 require('configs.nvim_treesitter')
 require('configs.gitsigns')
+require('configs.telescope')
 
 -- language server protocol support
 require('lsp.install')
