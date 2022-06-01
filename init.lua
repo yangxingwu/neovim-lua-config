@@ -10,6 +10,7 @@ require('configs.bufferline')
 require('configs.lualine')
 require('configs.nvim_tree')
 require('configs.nvim_treesitter')
+require('configs.gitsigns')
 
 -- language server protocol support
 require('lsp.install')
