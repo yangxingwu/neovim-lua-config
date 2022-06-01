@@ -46,9 +46,4 @@ require('packer').startup(function()
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  -- Automatically set up configuration after cloning packer.nvim
-  if PACKER_BOOTSTRAP then
-    require('packer').sync()
-  end
 end)
