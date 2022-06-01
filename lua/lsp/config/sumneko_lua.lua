@@ -7,6 +7,10 @@ require('lspconfig').sumneko_lua.setup {
     -- This will be the default in neovim 0.7+
     debounce_text_changes = 150,
   },
+
+  -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+  capabilities = LSP_CLIENT_CAPABILITIES,
+
   -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
   settings = {
     Lua = {

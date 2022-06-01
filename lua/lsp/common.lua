@@ -32,3 +32,8 @@ LSP_ON_ATTACH = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', LSP_KEYMAP_OPTS)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', LSP_KEYMAP_OPTS)
 end
+
+-- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
+-- Add additional capabilities supported by nvim-cmp
+LSP_CLIENT_CAPABILITIES = vim.lsp.protocol.make_client_capabilities()
+LSP_CLIENT_CAPABILITIES = require('cmp_nvim_lsp').update_capabilities(LSP_CLIENT_CAPABILITIES)

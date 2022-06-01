@@ -13,3 +13,6 @@ require('configs.nvim_treesitter')
 -- language server protocol support
 require('lsp.install')
 require('lsp.setup')
+
+-- auto completion and snippets
+require('cmp_and_snip')

@@ -7,4 +7,7 @@ require('lspconfig').bashls.setup {
     -- This will be the default in neovim 0.7+
     debounce_text_changes = 150,
   },
+
+  -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+  capabilities = LSP_CLIENT_CAPABILITIES,
 }
