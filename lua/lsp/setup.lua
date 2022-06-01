@@ -1,6 +1,7 @@
 require('lsp.common')
 
 -- Mappings
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', LSP_KEYMAP_OPTS)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', LSP_KEYMAP_OPTS)
