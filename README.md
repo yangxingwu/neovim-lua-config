@@ -4,9 +4,9 @@ This repo is meant to be used as a starting point for my own configuration. Insp
 
 ## clangd for linux kernel
 
-refer to [scripts: add a tool to produce a compile_commands.json file](https://lore.kernel.org/lkml/20181218224907.1274-1-tmroeder@google.com/)
+refer to [b30204640192234d18f9168f19f9cd693485b86d](https://github.com/torvalds/linux/commit/b30204640192234d18f9168f19f9cd693485b86d):
 
-Note that while gen_compile_commands.py enables the use of clang-based tools, it does not require the kernel to be compiled with clang. E.g., the following sequence of commands produces a compile_commands.json file that works correctly with LibTooling.
+> Note that while `gen_compile_commands.py` enables the use of clang-based tools, it does not require the kernel to be compiled with clang. E.g., the following sequence of commands produces a compile_commands.json file that works correctly with LibTooling.
 
 ```bash
 $ make defconfig

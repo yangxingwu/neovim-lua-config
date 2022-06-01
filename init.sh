@@ -18,6 +18,9 @@ sudo apt install ripgrep
 # https://github.com/sharkdp/fd
 sudo apt install fd-find
 
+# install npm
+sudo apt install npm
+
 # update nodejs
 sudo npm install -g n
 sudo n lts # Long Term Support (or sudo n latest)
