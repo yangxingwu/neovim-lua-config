@@ -4,6 +4,9 @@ require('basics')
 -- install plugins
 require('plugins')
 
+-- keybindings
+require('keymappings')
+
 -- plugin configs
 require('configs.gruvbox')
 require('configs.bufferline')
