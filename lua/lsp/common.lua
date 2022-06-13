@@ -4,6 +4,7 @@ LANGUAGE_SERVERS = {
   'clangd', -- c & cpp
   'gopls', -- golang
   'jedi_language_server', -- python
+  'rust_analyzer', -- rust
 }
 
 -- Mappings
