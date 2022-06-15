@@ -10,4 +10,6 @@ require('lspconfig').clangd.setup {
 
   -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
   capabilities = LSP_CLIENT_CAPABILITIES,
+
+  cmd = { "clangd", "--background-index=false" },
 }
