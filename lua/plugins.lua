@@ -18,4 +18,5 @@ require('packer').startup(function()
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }                 -- Add git related info in the signs columns and popups
   use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }           -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }                      -- Fuzzy Finder Algorithm
+  use 'lukas-reineke/indent-blankline.nvim'                                             -- Add indentation guides even on blank lines
 end)
