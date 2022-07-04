@@ -19,4 +19,5 @@ require('packer').startup(function()
   use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }           -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }                      -- Fuzzy Finder Algorithm
   use 'lukas-reineke/indent-blankline.nvim'                                             -- Add indentation guides even on blank lines
+  use 'tpope/vim-sleuth'                                                                -- Detect tabstop and shiftwidth automatically
 end)
