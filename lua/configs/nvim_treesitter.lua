@@ -10,6 +10,7 @@ require('nvim-treesitter.configs').setup {
     "go",
     "python",
     "make",
+    "cmake",
     "markdown",
     "rst",
     "json"

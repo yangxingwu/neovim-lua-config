@@ -5,6 +5,7 @@ LANGUAGE_SERVERS = {
   'gopls', -- golang
   'jedi_language_server', -- python
   'rust_analyzer', -- rust
+  'cmake', -- cmake
   -- 'ccls', -- c & cpp
 }
 
