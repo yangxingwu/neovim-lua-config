@@ -3,7 +3,7 @@ LANGUAGE_SERVERS = {
   'sumneko_lua', -- lua
   'clangd', -- c & cpp
   'gopls', -- golang
-  'jedi_language_server', -- python
+  'pyright', -- python
   'rust_analyzer', -- rust
   'cmake', -- cmake
   -- 'ccls', -- c & cpp
