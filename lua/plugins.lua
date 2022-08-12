@@ -23,4 +23,5 @@ require('packer').startup(function()
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }                      -- Fuzzy Finder Algorithm
   use 'lukas-reineke/indent-blankline.nvim'                                             -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth'                                                                -- Detect tabstop and shiftwidth automatically
+  use 'vim-scripts/Mark'                                                                -- Highlight several words in different colors simultaneously
 end)
