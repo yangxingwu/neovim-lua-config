@@ -20,6 +20,7 @@ require('configs.indent-blankline')
 -- language server protocol support
 require('lsp.install')
 require('lsp.setup')
+require('lsp.null-ls')
 
 -- auto completion and snippets
 require('cmp_and_snip')

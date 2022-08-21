@@ -24,4 +24,5 @@ require('packer').startup(function()
   use 'lukas-reineke/indent-blankline.nvim'                                             -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth'                                                                -- Detect tabstop and shiftwidth automatically
   use 'vim-scripts/Mark'                                                                -- Highlight several words in different colors simultaneously
+  use 'jose-elias-alvarez/null-ls.nvim'                                                 -- To inject LSP diagnostics, code actions, and more via Lua.
 end)
