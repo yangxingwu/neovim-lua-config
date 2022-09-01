@@ -6,9 +6,10 @@ require("null-ls").setup {
 
     -- for python
     require("null-ls").builtins.formatting.isort,
-    require("null-ls").builtins.formatting.black.with {
-      extra_args = { "--line-length", "79" },
-    },
+    require("null-ls").builtins.formatting.blue,
+    -- require("null-ls").builtins.formatting.black.with {
+    --   extra_args = { "--line-length", "79" },
+    -- },
     require("null-ls").builtins.diagnostics.flake8,
   },
 }
