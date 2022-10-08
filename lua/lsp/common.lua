@@ -6,6 +6,7 @@ LANGUAGE_SERVERS = {
   'pyright', -- python
   'rust_analyzer', -- rust
   'cmake', -- cmake
+  'jsonls', -- json
   -- 'ccls', -- c & cpp
 }
 
