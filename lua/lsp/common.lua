@@ -41,5 +41,4 @@ end
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
 -- Add additional capabilities supported by nvim-cmp
-LSP_CLIENT_CAPABILITIES = vim.lsp.protocol.make_client_capabilities()
-LSP_CLIENT_CAPABILITIES = require('cmp_nvim_lsp').update_capabilities(LSP_CLIENT_CAPABILITIES)
+LSP_CLIENT_CAPABILITIES = require('cmp_nvim_lsp').default_capabilities()
