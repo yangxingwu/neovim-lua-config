@@ -1,5 +1,12 @@
 require('lsp.common')
 
-require('nvim-lsp-installer').setup {
+require("mason").setup {
+  ui = {
+    icons = {
+      package_installed = "✓"
+    }
+  }
+}
+require("mason-lspconfig").setup {
   ensure_installed = LANGUAGE_SERVERS,
 }

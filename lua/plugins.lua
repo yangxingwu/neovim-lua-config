@@ -12,7 +12,8 @@ require('packer').startup(function()
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }     -- File Explorer
   use 'nvim-treesitter/nvim-treesitter'                                                 -- Highlight, edit, and navigate code
   use 'neovim/nvim-lspconfig'                                                           -- Collection of configurations for built-in LSP client
-  use 'williamboman/nvim-lsp-installer'                                                 -- Automatically install language servers to stdpath
+  use { "williamboman/mason.nvim" } -- Portable package manager for Neovim that runs everywhere Neovim runs
+  use { "williamboman/mason-lspconfig.nvim" } -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }                     -- Autocompletion
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }                 -- Snippet Engine and Snippet Expansion
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }                 -- Add git related info in the signs columns and popups
