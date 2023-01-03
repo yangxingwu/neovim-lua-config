@@ -7,7 +7,6 @@ LANGUAGE_SERVERS = {
   'rust_analyzer', -- rust
   'cmake', -- cmake
   'jsonls', -- json
-  -- 'ccls', -- c & cpp
 }
 
 -- Mappings
