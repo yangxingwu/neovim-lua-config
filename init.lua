@@ -16,6 +16,7 @@ require('configs.nvim_treesitter')
 require('configs.gitsigns')
 require('configs.telescope')
 require('configs.indent-blankline')
+require('configs.symbols-outline')
 
 -- language server protocol support
 require('lsp.install')
