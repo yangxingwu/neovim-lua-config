@@ -1,6 +1,6 @@
 require('lsp.common')
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
   on_attach = LSP_ON_ATTACH,
   flags = {

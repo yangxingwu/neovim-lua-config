@@ -1,6 +1,6 @@
 LANGUAGE_SERVERS = {
   'bashls', -- bash
-  'sumneko_lua', -- lua
+  'lua_ls', -- lua
   'clangd', -- c & cpp
   'gopls', -- golang
   'pyright', -- python
