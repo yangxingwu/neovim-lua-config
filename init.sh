@@ -27,3 +27,39 @@ sudo n lts # Long Term Support (or sudo n latest)
 
 # install tree-sitter
 sudo npm install -g tree-sitter-cli
+
+# python3
+sudo apt install python3-venv python3-pip
+pip3 install isort blue flake8 neovim
+
+cat << EOF >> ~/.zshenv
+python3_user_base =\$(python3 -m site --user-base)
+case ":\${PATH}:" in
+    *:"\${python3_user_base}/bin":*)
+        ;;
+    *)
+        export PATH="\${python3_user_base}/bin:\${PATH}"
+        ;;
+esac
+EOF
+
+# shfmt and shellcheck
+sudo apt install shfmt shellcheck
+
+# tmux
+cat << EOF >> ~/.tmux.conf
+set-option -sg escape-time 10
+set-option -g focus-events on
+set-option -g default-terminal screen-256color
+EOF
+
+# golang
+cat << EOF >> ~/.zshenv
+case ":\${PATH}:" in
+    *:"/usr/local/go/bin":*)
+        ;;
+    *)
+        export PATH="/usr/local/go/bin:\${PATH}"
+        ;;
+esac
+EOF
