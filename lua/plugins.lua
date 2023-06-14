@@ -27,4 +27,5 @@ require('packer').startup(function()
   use 'vim-scripts/Mark'                                                                -- Highlight several words in different colors simultaneously
   use 'jose-elias-alvarez/null-ls.nvim'                                                 -- To inject LSP diagnostics, code actions, and more via Lua.
   use 'simrat39/symbols-outline.nvim' -- A tree like view for symbols in Neovim using the Language Server Protocol
+  use 'sainnhe/everforest' -- Comfortable & Pleasant Color Scheme for Vim
 end)

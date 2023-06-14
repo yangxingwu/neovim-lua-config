@@ -8,7 +8,7 @@ require('plugins')
 require('keymappings')
 
 -- plugin configs
-require('configs.gruvbox')
+require('configs.colorscheme')
 require('configs.bufferline')
 require('configs.lualine')
 require('configs.nvim_tree')
