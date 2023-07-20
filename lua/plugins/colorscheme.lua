@@ -1,6 +1,9 @@
 return {
-  -- add gruvbox
+  -- add colorschemes
   { "ellisonleao/gruvbox.nvim" },
+  { "folke/tokyonight.nvim" },
+  { "catppuccin/nvim" },
+  { "rebelot/kanagawa.nvim" },
 
   -- Configure LazyVim to load gruvbox
   {
