@@ -17,5 +17,15 @@ return {
         }
       end,
     },
+    servers = {
+      -- turn off clangd for .proto files
+      --
+      -- refer to https://github.com/neovim/nvim-lspconfig/blob/master/lua/\
+      -- lspconfig/configs/clangd.lua#L53 and https://github.com/LazyVim/\
+      -- LazyVim/discussions/3997
+      clangd = {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+      },
+    },
   },
 }
