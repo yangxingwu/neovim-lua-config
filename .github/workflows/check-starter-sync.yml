@@ -1,0 +1,38 @@
+name: Check LazyVim Starter Sync
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'  # Monthly on the 1st at 9:00 UTC
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  check-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check starter sync
+        id: check
+        run: |
+          chmod +x scripts/check-starter-sync.sh
+          if ! ./scripts/check-starter-sync.sh > /tmp/diff-output.txt 2>&1; then
+            echo "diverged=true" >> "$GITHUB_OUTPUT"
+            cat /tmp/diff-output.txt
+          else
+            echo "diverged=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create issue if diverged
+        if: steps.check.outputs.diverged == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const diffOutput = fs.readFileSync('/tmp/diff-output.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'LazyVim starter has diverged from local config',
+              body: `The monthly sync check found differences between this config and the [LazyVim/starter](https://github.com/LazyVim/starter) template.\n\n\`\`\`\n${diffOutput}\n\`\`\`\n\nPlease review and update scaffold files if needed.`,
+              labels: ['maintenance']
+            });
