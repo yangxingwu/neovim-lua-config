@@ -40,7 +40,7 @@ echo ""
 cd "$STARTER_DIR"
 STARTER_FILES=$(find . -type f ! -path './.git/*' ! -name 'LICENSE' ! -name 'README.md' | sed 's|^\./||' | sort)
 cd "$PROJECT_DIR"
-PROJECT_FILES=$(find . -type f ! -path './.git/*' ! -path './docs/*' ! -path './.claude/*' ! -path './.github/*' ! -path './scripts/*' ! -name 'LICENSE' ! -name 'README.md' ! -name 'CLAUDE.md' ! -name 'GUIDE.md' ! -name 'GUIDE.zh.md' ! -name 'lazy-lock.json' ! -name 'lazyvim.json' | sed 's|^\./||' | sort)
+PROJECT_FILES=$(find . -type f ! -path './.git/*' ! -path './docs/*' ! -path './.claude/*' ! -path './.github/*' ! -path './scripts/*' ! -name 'LICENSE' ! -name 'README.md' ! -name 'CLAUDE.md' ! -name 'GUIDE.md' ! -name 'GUIDE.zh-CN.md' ! -name 'lazy-lock.json' ! -name 'lazyvim.json' | sed 's|^\./||' | sort)
 
 # 1. Files in starter but NOT in project (MISSING)
 echo "--- [1/3] Files in starter but not in project ---"

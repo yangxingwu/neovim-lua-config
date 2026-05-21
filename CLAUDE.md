@@ -33,7 +33,7 @@ Manual:
 
 - Large C/C++ projects: use .clangd file for Index/Background settings
 - Legacy projects: use .nvim.lua with vim.b.autoformat = false
-- See GUIDE.md / GUIDE.zh.md for detailed instructions
+- See GUIDE.md / GUIDE.zh-CN.md for detailed instructions
 
 ## Documentation References
 
