@@ -46,31 +46,36 @@ The `lang.markdown` extra is enabled for rendering and preview, but markdownlint
 
 ### Linux Kernel + clangd
 
-For large C/C++ projects like the Linux kernel, create a `.clangd` file in the project root:
+Create a `.clangd` file in the kernel source root to control clangd behavior:
 
 ```yaml
-CompileFlags:
-  CompilationDatabase: .
-
 Index:
   Background: Build  # Only index compiled files (saves memory/CPU)
+
+CompileFlags:
+  Add: [--pch-storage=disk]  # Store PCH on disk to reduce RAM usage
 ```
+
+**If still too slow (macOS read-only browsing):**
+
+```yaml
+Index:
+  Background: Skip  # No background indexing, only process open files
+```
+
+`Skip` uses minimal resources. Tradeoff: "find references" only works for files you've opened.
 
 **Generate compile_commands.json:**
 
 ```bash
 # In the kernel source tree (after building):
 scripts/clang-tools/gen_compile_commands.py
+
+# Only generate for a subsystem (faster):
+scripts/clang-tools/gen_compile_commands.py -d . drivers/net/ net/
 ```
 
-**Additional tips for very large projects:**
-- Add `--pch-storage=disk` to reduce memory usage:
-  ```yaml
-  CompileFlags:
-    Add: [--pch-storage=disk]
-  ```
-- `Index: Background: Build` only indexes files that were compiled, dramatically reducing resource usage
-- Do NOT disable `--background-index` globally in Neovim config; configure per-project via `.clangd`
+**Note:** The `.clangd` file is created locally by you, not part of upstream kernel. Don't commit it upstream.
 
 ### Disabling Autoformat Per Project
 

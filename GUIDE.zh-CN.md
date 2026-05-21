@@ -46,31 +46,36 @@
 
 ### Linux Kernel + clangd
 
-对于 Linux 内核等大型 C/C++ 项目，在项目根目录创建 `.clangd` 文件：
+在 kernel 源码根目录创建 `.clangd` 文件控制 clangd 行为：
 
 ```yaml
-CompileFlags:
-  CompilationDatabase: .
-
 Index:
   Background: Build  # 只索引编译过的文件（节省内存/CPU）
+
+CompileFlags:
+  Add: [--pch-storage=disk]  # 预编译头存磁盘，降低 RAM 占用
 ```
+
+**如果还卡（macOS 纯浏览场景）：**
+
+```yaml
+Index:
+  Background: Skip  # 完全不后台索引，只处理当前打开的文件
+```
+
+`Skip` 最省资源，代价是"查找引用"只能找到打开过的文件。
 
 **生成 compile_commands.json：**
 
 ```bash
 # 在内核源码树中（编译后）：
 scripts/clang-tools/gen_compile_commands.py
+
+# 只生成某个子系统的（更快）：
+scripts/clang-tools/gen_compile_commands.py -d . drivers/net/ net/
 ```
 
-**超大项目的额外建议：**
-- 通过 `.clangd` 添加 `--pch-storage=disk` 降低内存占用：
-  ```yaml
-  CompileFlags:
-    Add: [--pch-storage=disk]
-  ```
-- `Index: Background: Build` 只索引编译过的文件，相比全量索引大幅减少资源占用
-- 不要在全局 Neovim 配置中禁用 `--background-index`，应在项目级 `.clangd` 中按需配置
+**注意：** `.clangd` 文件是你自己在本地创建的，不是 kernel 自带的，不要提交到 upstream。
 
 ### 按项目禁用 Autoformat
 
