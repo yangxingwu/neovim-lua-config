@@ -6,3 +6,7 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+-- Disable spell check for markdown/text files.
+-- Reason: CJK characters are flagged as misspelled.
+vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
