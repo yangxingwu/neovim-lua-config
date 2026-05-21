@@ -10,17 +10,11 @@ should remain in sync with upstream starter.
 
 ## Checking Starter Sync
 
-To compare with the latest starter:
+Automated: GitHub Action runs monthly, creates an issue if drift detected.
 
-    git clone --depth 1 https://github.com/LazyVim/starter.git /tmp/lazyvim-starter
-    diff /tmp/lazyvim-starter/init.lua init.lua
-    diff /tmp/lazyvim-starter/lua/config/lazy.lua lua/config/lazy.lua
-    diff /tmp/lazyvim-starter/.gitignore .gitignore
-    diff /tmp/lazyvim-starter/stylua.toml stylua.toml
-    diff /tmp/lazyvim-starter/.neoconf.json .neoconf.json
-    rm -rf /tmp/lazyvim-starter
+Manual:
 
-The starter rarely changes. Check quarterly or when LazyVim announces breaking changes.
+    ./scripts/check-starter-sync.sh
 
 ## Architecture
 
@@ -31,11 +25,15 @@ The starter rarely changes. Check quarterly or when LazyVim announces breaking c
 
 ## Key Customizations
 
-- clangd: background-index disabled, .proto excluded from filetypes
-- meson: muon as LSP
-- bufferline: quickfix buffer hidden
-- autocmds: autoformat disabled for C/C++
-- colorscheme: catppuccin-mocha
+- meson: muon as LSP (lua/plugins/meson.lua)
+- colorscheme: catppuccin-mocha (lua/plugins/colorscheme.lua)
+- markdown: lang.markdown extra enabled, markdownlint disabled (lua/plugins/markdown.lua)
+
+## Per-Project Configuration
+
+- Large C/C++ projects: use .clangd file for Index/Background settings
+- Legacy projects: use .nvim.lua with vim.b.autoformat = false
+- See GUIDE.md / GUIDE.zh.md for detailed instructions
 
 ## Documentation References
 
