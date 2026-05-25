@@ -128,7 +128,6 @@ fi
 EOF
 chmod +x .git/hooks/pre-commit
 ```
-```
 
 或者使用 [pre-commit](https://pre-commit.com/) 框架，在 `.pre-commit-config.yaml` 中添加：
 
