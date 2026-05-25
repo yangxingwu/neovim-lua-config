@@ -116,7 +116,7 @@ This gives you clean formatting on your changes without touching the rest of the
 To avoid forgetting, add a git hook that runs `git-clang-format` automatically on commit:
 
 ```bash
-# .git/hooks/pre-commit (or use pre-commit framework)
+cat > .git/hooks/pre-commit << 'EOF'
 #!/bin/sh
 # Auto-format only the staged modified lines
 git clang-format --staged --diff --quiet
@@ -125,6 +125,8 @@ if [ $? -ne 0 ]; then
     echo "Formatted staged changes. Please review and re-stage."
     exit 1
 fi
+EOF
+chmod +x .git/hooks/pre-commit
 ```
 
 Or with the [pre-commit](https://pre-commit.com/) framework, add to `.pre-commit-config.yaml`:

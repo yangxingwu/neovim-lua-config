@@ -116,7 +116,7 @@ git clang-format HEAD~1
 避免忘记手动执行，可以加一个 git hook 在 commit 时自动跑 `git-clang-format`：
 
 ```bash
-# .git/hooks/pre-commit（或使用 pre-commit 框架）
+cat > .git/hooks/pre-commit << 'EOF'
 #!/bin/sh
 # 自动格式化 staged 的修改行
 git clang-format --staged --diff --quiet
@@ -125,6 +125,9 @@ if [ $? -ne 0 ]; then
     echo "已格式化 staged 的修改，请检查后重新 stage。"
     exit 1
 fi
+EOF
+chmod +x .git/hooks/pre-commit
+```
 ```
 
 或者使用 [pre-commit](https://pre-commit.com/) 框架，在 `.pre-commit-config.yaml` 中添加：
