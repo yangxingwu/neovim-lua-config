@@ -77,9 +77,13 @@ scripts/clang-tools/gen_compile_commands.py -d . drivers/net/ net/
 
 **注意：** `.clangd` 文件是你自己在本地创建的，不是 kernel 自带的，不要提交到 upstream。
 
-### 按项目禁用 Autoformat
+### C/C++ 存量项目的格式化策略
 
-对于格式不规范的老项目，在项目根目录创建 `.nvim.lua`：
+对于格式不规范的老项目，保存时全量格式化会导致 diff 过大。推荐工作流：
+
+**第一步：在编辑器中禁用 autoformat**
+
+在项目根目录创建 `.nvim.lua`：
 
 ```lua
 -- 禁用此项目的 autoformat
@@ -89,6 +93,25 @@ vim.b.autoformat = false
 Neovim 的 `exrc` 功能（LazyVim 默认开启）会在打开项目时自动加载此文件。
 
 **临时切换：** 按 `<leader>uf` 切换当前 buffer 的 autoformat。
+
+**第二步：提交前只格式化修改的行**
+
+使用 `git-clang-format`（随 clang/LLVM 工具链附带）只格式化你改动的行：
+
+```bash
+# 格式化 staged 的修改（commit 前）：
+git clang-format
+
+# 预览会改什么（dry-run）：
+git clang-format --diff
+
+# 格式化相对于某个 commit 的修改：
+git clang-format HEAD~1
+```
+
+这样你自己改动的代码是干净的，但不会动文件的其他部分。
+
+**注意：** Go 和 Rust 项目一般不需要此策略——`gofmt` 和 `rustfmt` 从项目诞生起就是标配，存量代码本身就是格式化的。
 
 ## 快捷键速查
 
@@ -130,4 +153,4 @@ git commit -m "chore: update plugin versions"
 
 - **buf LSP**：Protobuf 语言服务器支持（需要时再配置）
 - **智能 autoformat**：基于 `.clang-format` 文件存在性自动判断是否格式化
-- **只格式化修改行**：集成 `git-clang-format`，只格式化 git diff 中的行
+- **编辑器内只格式化修改行**：conform.nvim [跟踪了此 feature request](https://github.com/stevearc/conform.nvim/issues/92) 但尚未内置；社区方案是 gitsigns hunks + conform range format（约 30 行 Lua）

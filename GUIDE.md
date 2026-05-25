@@ -77,9 +77,13 @@ scripts/clang-tools/gen_compile_commands.py -d . drivers/net/ net/
 
 **Note:** The `.clangd` file is created locally by you, not part of upstream kernel. Don't commit it upstream.
 
-### Disabling Autoformat Per Project
+### Formatting in Legacy C/C++ Projects
 
-For legacy projects with inconsistent formatting, create `.nvim.lua` in the project root:
+For legacy projects with inconsistent formatting, full-file format-on-save creates noisy diffs. The recommended workflow:
+
+**Step 1: Disable autoformat in the editor**
+
+Create `.nvim.lua` in the project root:
 
 ```lua
 -- Disable autoformat for this project
@@ -89,6 +93,25 @@ vim.b.autoformat = false
 Neovim's `exrc` feature (enabled by LazyVim) loads this file automatically.
 
 **Temporary toggle:** Press `<leader>uf` to toggle autoformat for the current buffer.
+
+**Step 2: Format only modified lines before commit**
+
+Use `git-clang-format` (bundled with clang/LLVM) to format only the lines you changed:
+
+```bash
+# Format staged changes (before commit):
+git clang-format
+
+# Preview what would change (dry-run):
+git clang-format --diff
+
+# Format changes relative to a specific commit:
+git clang-format HEAD~1
+```
+
+This gives you clean formatting on your changes without touching the rest of the file.
+
+**Note:** Go and Rust projects rarely need this — `gofmt` and `rustfmt` are standard from day one, so legacy code is already formatted.
 
 ## Key Shortcuts
 
@@ -130,4 +153,4 @@ git commit -m "chore: update plugin versions"
 
 - **buf LSP**: Protobuf language server support (when needed)
 - **Smart autoformat**: Auto-detect based on `.clang-format` presence
-- **Format changed lines only**: Integration with `git-clang-format`
+- **Editor-level format-modified-only**: conform.nvim [tracks this feature request](https://github.com/stevearc/conform.nvim/issues/92) but has not built it in; community workaround uses gitsigns hunks + conform range format (~30 lines Lua)
