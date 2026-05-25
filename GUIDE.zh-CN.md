@@ -111,6 +111,33 @@ git clang-format HEAD~1
 
 这样你自己改动的代码是干净的，但不会动文件的其他部分。
 
+**可选：用 pre-commit hook 自动化**
+
+避免忘记手动执行，可以加一个 git hook 在 commit 时自动跑 `git-clang-format`：
+
+```bash
+# .git/hooks/pre-commit（或使用 pre-commit 框架）
+#!/bin/sh
+# 自动格式化 staged 的修改行
+git clang-format --staged --diff --quiet
+if [ $? -ne 0 ]; then
+    git clang-format --staged
+    echo "已格式化 staged 的修改，请检查后重新 stage。"
+    exit 1
+fi
+```
+
+或者使用 [pre-commit](https://pre-commit.com/) 框架，在 `.pre-commit-config.yaml` 中添加：
+
+```yaml
+repos:
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v18.1.8
+    hooks:
+      - id: clang-format
+        types_or: [c, c++]
+```
+
 **注意：** Go 和 Rust 项目一般不需要此策略——`gofmt` 和 `rustfmt` 从项目诞生起就是标配，存量代码本身就是格式化的。
 
 ## 快捷键速查

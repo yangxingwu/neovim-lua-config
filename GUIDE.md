@@ -111,6 +111,33 @@ git clang-format HEAD~1
 
 This gives you clean formatting on your changes without touching the rest of the file.
 
+**Optional: Automate with a pre-commit hook**
+
+To avoid forgetting, add a git hook that runs `git-clang-format` automatically on commit:
+
+```bash
+# .git/hooks/pre-commit (or use pre-commit framework)
+#!/bin/sh
+# Auto-format only the staged modified lines
+git clang-format --staged --diff --quiet
+if [ $? -ne 0 ]; then
+    git clang-format --staged
+    echo "Formatted staged changes. Please review and re-stage."
+    exit 1
+fi
+```
+
+Or with the [pre-commit](https://pre-commit.com/) framework, add to `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v18.1.8
+    hooks:
+      - id: clang-format
+        types_or: [c, c++]
+```
+
 **Note:** Go and Rust projects rarely need this — `gofmt` and `rustfmt` are standard from day one, so legacy code is already formatted.
 
 ## Key Shortcuts
